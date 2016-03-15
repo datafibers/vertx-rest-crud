@@ -4,9 +4,16 @@ import com.tymoshenko.model.Whisky;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
+ * JpaRepository for Whisky entity.
+ * No implementation required - it will be provided for us by Spring at runtime.
+ *
+ * <strong>
+ *     Note, this interface is package-private.
+ *     It's API should be exposed via wrapper class (WhiskyCrudService) only.
+ * </strong>
+ *
  * @author Yakiv Tymoshenko
  * @since 07.03.2016
  */
-public interface WhiskyRepository extends JpaRepository<Whisky, Long> {
-    // No impl required. The Spring Framework will provide the impl at the runtime
+interface WhiskyRepository extends JpaRepository<Whisky, Long> {
 }

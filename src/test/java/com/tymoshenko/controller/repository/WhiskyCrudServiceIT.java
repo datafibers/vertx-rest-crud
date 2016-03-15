@@ -1,4 +1,4 @@
-package com.tymoshenko.controller.service;
+package com.tymoshenko.controller.repository;
 
 import com.tymoshenko.controller.context.SpringConfig;
 import com.tymoshenko.model.Whisky;
@@ -15,6 +15,9 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
+ * TODO : add tests for exceptional cases / border conditions.
+ * TODO : use separate DB for tests.
+ * TODO : clean up the DB after tests.
  * @author Yakiv
  * @since 15.03.2016
  */
@@ -22,7 +25,7 @@ import static org.junit.Assert.*;
 @ContextConfiguration(classes = SpringConfig.class)
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=true)
 @Transactional
-public class WhiskyCrudServiceTest {
+public class WhiskyCrudServiceIT {
 
     @Autowired
     private CrudService<Whisky> whiskyCrudService;

@@ -18,13 +18,13 @@ Requirements:
     + Connect to DB
     + Generate schema from ddl
     + Repository class with CRUD methods
-~2. REST methods using Vertx to invoke CRUD
++2. REST methods using Vertx to invoke CRUD
     + GetAll
-    - get by id
-    - post - to create
-    - push/patch to update
-    - delete to delete
-3. Security (auth)
+    + get by id
+    + post - to create
+    + push to update
+    + delete to delete
+~3. Security (auth)
     - invoking rest methods shall require auth
     - db auth?
 4. Use MariaDB 5.5.44

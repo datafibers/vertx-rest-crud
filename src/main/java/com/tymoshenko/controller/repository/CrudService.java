@@ -1,4 +1,4 @@
-package com.tymoshenko.controller.service;
+package com.tymoshenko.controller.repository;
 
 import java.util.List;
 

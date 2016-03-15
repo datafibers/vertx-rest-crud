@@ -15,7 +15,24 @@
 - Documentation of public methods
 
 ### How to run:
-1. Run MainApp
-2. Point your browser at [Welcome Page] (http://localhost:8080) to see a simple welcome page
-3. Point your browser at [Whisky List] (http://localhost:8080/whiskys) to see the Spring-hosted service invoked via the vertx eventbus
+1. Build the project with Maven:
+
+```
+mvn clean package
+```
+
+2. Launch the _fat jar_ as follows:
+
+```
+java -jar target/vertx-rest-crud-1.0-SNAPSHOT-fat.jar
+```
+
+3. Point your browser at [Welcome Page] (http://localhost:8080) to see a simple welcome page
+4. Point your browser at [Whisky List] (http://localhost:8080/whiskys) to see the Spring-hosted service invoked via the vertx eventbus
     
+### REST API:
+* POST /rest/whiskys => Create a new whisky
+* GET /rest/whiskys => Get (read) all whiskys
+* GET /rest/whiskys/id => Get (read) the whisky with the corresponding id
+* PUT /rest/whiskys/id => Update whisky with the corresponding id
+* DELETE /rest/whiskys/id => Delete whisky with the corresponding id

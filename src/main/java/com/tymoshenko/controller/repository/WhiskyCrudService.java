@@ -1,6 +1,5 @@
-package com.tymoshenko.controller.service;
+package com.tymoshenko.controller.repository;
 
-import com.tymoshenko.controller.repository.WhiskyRepository;
 import com.tymoshenko.model.Whisky;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -31,28 +31,42 @@ import java.util.Properties;
  * @since 15.03.2016
  */
 @Configuration
-@ComponentScan("com.tymoshenko.controller.service")
+@ComponentScan("com.tymoshenko.controller")
 @EnableJpaRepositories(basePackages = {"com.tymoshenko.controller.repository"})
 @PropertySource(value = {"classpath:jdbc.properties"})
 public class SpringConfig {
+
+    public static final String PKG_TO_SCAN = "com.tymoshenko.model";
+
+    public static final String INIT_DB_SQL = "init-db.sql";
+
+    public static final String JDBC_DRIVER_CLASS_NAME = "jdbc.driverClassName";
+    public static final String JDBC_URL = "jdbc.url";
+    public static final String JDBC_USERNAME = "jdbc.username";
+    public static final String JDBC_PASSWORD = "jdbc.password";
+
+    public static final String HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
+    public static final String HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 
     @Autowired
     private Environment jdbcProperties;
 
     @Bean
     @Autowired
+    @SuppressWarnings("unused")
     public DataSource dataSource(DatabasePopulator populator) {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(jdbcProperties.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(jdbcProperties.getProperty("jdbc.url"));
-        dataSource.setUsername(jdbcProperties.getProperty("jdbc.username"));
-        dataSource.setPassword(jdbcProperties.getProperty("jdbc.password"));
+        dataSource.setDriverClassName(jdbcProperties.getProperty(JDBC_DRIVER_CLASS_NAME));
+        dataSource.setUrl(jdbcProperties.getProperty(JDBC_URL));
+        dataSource.setUsername(jdbcProperties.getProperty(JDBC_USERNAME));
+        dataSource.setPassword(jdbcProperties.getProperty(JDBC_PASSWORD));
         DatabasePopulatorUtils.execute(populator, dataSource);
         return dataSource;
     }
 
     @Bean
     @Autowired
+    @SuppressWarnings("unused")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(final DataSource dataSource) {
         final LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setDataSource(dataSource);
@@ -61,26 +75,28 @@ public class SpringConfig {
         vendorAdapter.setShowSql(Boolean.TRUE);
         factory.setDataSource(dataSource);
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.tymoshenko.model");
+        factory.setPackagesToScan(PKG_TO_SCAN);
         Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.hbm2ddl.auto", jdbcProperties.getProperty("hibernate.hbm2ddl.auto"));
-        jpaProperties.put("hibernate.show_sql", jdbcProperties.getProperty("hibernate.show_sql"));
+        jpaProperties.put(HIBERNATE_HBM2DDL_AUTO, jdbcProperties.getProperty(HIBERNATE_HBM2DDL_AUTO));
+        jpaProperties.put(HIBERNATE_SHOW_SQL, jdbcProperties.getProperty(HIBERNATE_SHOW_SQL));
         factory.setJpaProperties(jpaProperties);
         return factory;
     }
 
     @Bean
     @Autowired
+    @SuppressWarnings("unused")
     public PlatformTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory.getObject());
     }
 
     @Bean
     @Autowired
+    @SuppressWarnings("unused")
     public DatabasePopulator databasePopulator() {
         final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
         populator.setContinueOnError(false);
-        populator.addScript(new ClassPathResource("init-db.sql"));
+        populator.addScript(new ClassPathResource(INIT_DB_SQL));
         return populator;
     }
 }
