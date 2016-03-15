@@ -16,6 +16,6 @@
 
 ### How to run:
 1. Run MainApp
-2. Point your browser at (http://localhost:8080) to see a simple welcome page
-3. Point your browser at (http://localhost:8080/whiskys) to see the Spring-hosted service invoked via the vertx eventbus
+2. Point your browser at http://localhost:8080 to see a simple welcome page
+3. Point your browser at http://localhost:8080/whiskys to see the Spring-hosted service invoked via the vertx eventbus
     
