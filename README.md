@@ -28,7 +28,8 @@ java -jar target/vertx-rest-crud-1.0-SNAPSHOT-fat.jar
 ```
 
 3. Point your browser at [Welcome Page] (http://localhost:8080) to see a simple welcome page
-4. Point your browser at [Whisky List] (http://localhost:8080/whiskys) to see the Spring-hosted service invoked via the vertx eventbus
+4. Invoke REST API by this URL: [Whisky List] (http://localhost:8080/rest/whiskys)
+5. Use browser plugins for REST method invocations (e.g. [POSTMAN] (https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop))
     
 ### REST API:
 * POST /rest/whiskys => Create a new whisky
