@@ -1,5 +1,5 @@
 # vertx-rest-crud
-
+#Java, #Vert.x 3, #REST, #CRUD, #Spring-Data-JPA, #ShiroAuth
 ### Environment:
 - VM with Linux (RedHat ?)
 - Java 1.8.0_66
