@@ -28,6 +28,13 @@ java -jar target/vertx-rest-crud-1.0-SNAPSHOT-fat.jar
 3. Point your browser at [Welcome Page] (http://localhost:8080) to see a simple welcome page
 4. Invoke REST API by this URL: [/rest/whiskys] (http://localhost:8080/rest/whiskys)
 5. Use browser plugins for REST method invocations (e.g. [POSTMAN] (https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop))
+
+### Running integration tests
+* Requires deployment of a Verticle that runs HttpServer. This is achieved by running the fat-jar by maven plugins.
+* Use the following to run the integration tests:
+```
+mvn clean verify
+```
     
 ### REST API:
 * POST /rest/whiskys => Create a new whisky
