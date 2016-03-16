@@ -82,7 +82,7 @@ public class WhiskyCrudRestService {
         // Simple auth service which uses a properties file for user/role info
         AuthProvider authProvider = ShiroAuth.create(vertx, ShiroAuthRealmType.PROPERTIES, new JsonObject());
         // protect the API
-        router.route(REST_WHISKYS_URL + "/*").handler(BasicAuthHandler.create(authProvider));
+        router.route(REST_WHISKYS_URL + "/*").handler(BasicAuthHandler.create(authProvider).addAuthority("role:admin"));
         // We need a user session handler too to make sure the user is stored in the session between requests
         router.route().handler(UserSessionHandler.create(authProvider));
 
