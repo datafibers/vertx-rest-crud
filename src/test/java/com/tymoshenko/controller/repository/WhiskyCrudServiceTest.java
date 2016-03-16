@@ -10,7 +10,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.mockito.Mockito.verify;
 
 /**
- * This test is silly. All smart tests reside in integration-test folder.
+ * This test is silly.
+ * The smart test is the integration test (WhiskyCrudServiceIT).
  *
  * @author Yakiv
  * @since 15.03.2016

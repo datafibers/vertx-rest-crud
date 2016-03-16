@@ -33,6 +33,8 @@ public class WhiskyCrudRestServiceIT {
     public static void configureRestAssured() {
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = Integer.getInteger("http.port", 8080);
+
+        RestAssured.authentication = basic("tim", "sausages");
     }
 
     @AfterClass

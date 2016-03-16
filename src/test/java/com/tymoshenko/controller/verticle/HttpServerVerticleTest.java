@@ -9,6 +9,7 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
+import org.apache.commons.codec.binary.Base64;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +21,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 /**
+ * Check that we can deploy verticle, launch HttpServer and execute basic Http POST.
+ *
  * @author Yakiv
  * @since 15.03.2016
  */
@@ -89,9 +92,12 @@ public class HttpServerVerticleTest {
     public void testHttpPost_CanCreateNewWhiskyEntity(TestContext context) {
         Async async = context.async();
         final String json = Json.encodePrettily(new Whisky("Jameson", "Ireland"));
+
+        String base64 = Base64.encodeBase64String("tim:sausages".getBytes());
         vertx.createHttpClient().post(port, "localhost", WhiskyCrudRestService.REST_WHISKYS_URL)
                 .putHeader(WhiskyCrudRestService.CONTENT_TYPE, WhiskyCrudRestService.APPLICATION_JSON_CHARSET_UTF_8)
                 .putHeader("content-length", Integer.toString(json.length()))
+                .putHeader("AUTHORIZATION", "Basic " + base64)
                 .handler(response -> {
                     context.assertEquals(response.statusCode(), WhiskyCrudRestService.STATUS_CODE_OK_CREATED);
                     context.assertTrue(response.headers().get(WhiskyCrudRestService.CONTENT_TYPE).contains(WhiskyCrudRestService.APPLICATION_JSON_CHARSET_UTF_8));
