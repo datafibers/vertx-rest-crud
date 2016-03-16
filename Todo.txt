@@ -24,9 +24,8 @@ Requirements:
     + post - to create
     + push to update
     + delete to delete
-~3. Security (auth)
-    - invoking rest methods shall require auth
-    - db auth?
-4. Use MariaDB 5.5.44
++3. Security (auth)
+    + invoking rest methods shall require authentication and authorization
++4. Use MariaDB 5.5.44
 
 
