@@ -42,6 +42,10 @@ mvn clean verify
 * GET /rest/whiskys/id => Get (read) the whisky with the corresponding id
 * PUT /rest/whiskys/id => Update whisky with the corresponding id
 * DELETE /rest/whiskys/id => Delete whisky with the corresponding id
+* Example JSON:
+```
+{"name":"Bourbon", "origin":"USA"}
+```
 
 ### Authentication and Authorization
 * Simple Auth used based on io.vertx.ext.auth.shiro.ShiroAuth
