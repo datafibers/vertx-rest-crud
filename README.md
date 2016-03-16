@@ -16,19 +16,17 @@
 
 ### How to run:
 1. Build the project with Maven:
-
 ```
 mvn clean package
 ```
 
 2. Launch the _fat jar_ as follows:
-
 ```
 java -jar target/vertx-rest-crud-1.0-SNAPSHOT-fat.jar
 ```
 
 3. Point your browser at [Welcome Page] (http://localhost:8080) to see a simple welcome page
-4. Invoke REST API by this URL: [Whisky List] (http://localhost:8080/rest/whiskys)
+4. Invoke REST API by this URL: [/rest/whiskys] (http://localhost:8080/rest/whiskys)
 5. Use browser plugins for REST method invocations (e.g. [POSTMAN] (https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop))
     
 ### REST API:
@@ -37,3 +35,9 @@ java -jar target/vertx-rest-crud-1.0-SNAPSHOT-fat.jar
 * GET /rest/whiskys/id => Get (read) the whisky with the corresponding id
 * PUT /rest/whiskys/id => Update whisky with the corresponding id
 * DELETE /rest/whiskys/id => Delete whisky with the corresponding id
+
+### Authentication and Authorization
+* Simple Auth used based on io.vertx.ext.auth.shiro.ShiroAuth
+* Users, passwords and roles declared (unencripted) in properties file: vertx-users.properties
+* Using REST API for CRUD (URL: /rest/whiskys*) requires authentication (username: tim, password: sausages)
+* Only user with role:admin is authorized to use the REST API (URL: /rest/whiskys*) 
