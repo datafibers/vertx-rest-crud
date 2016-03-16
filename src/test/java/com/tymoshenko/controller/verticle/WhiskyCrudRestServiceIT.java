@@ -46,7 +46,6 @@ public class WhiskyCrudRestServiceIT {
     public void testCreate_ShouldParseJsonBody_AndSaveNewWhiskyIntoDB() throws Exception {
         Whisky whisky = createWhiskyAndSaveIntoDB();
 
-
         // Check we can get the new Whisky resource
         get(WhiskyCrudRestService.REST_WHISKYS_URL + "/" + whisky.getId())
                 .then()
@@ -59,7 +58,6 @@ public class WhiskyCrudRestServiceIT {
 
     @Test
     public void testGetById() {
-        // Now get by id and check the content
         get(WhiskyCrudRestService.REST_WHISKYS_URL + "/" + 2)
                 .then()
                 .assertThat()
@@ -70,7 +68,6 @@ public class WhiskyCrudRestServiceIT {
 
     @Test
     public void testGetAll_ShouldReturnListOfWhisky_WithSize3() throws Exception {
-        // Get the list of bottles, ensure it's a success and extract the first id.
         get(WhiskyCrudRestService.REST_WHISKYS_URL)
                 .then()
                 .assertThat()
