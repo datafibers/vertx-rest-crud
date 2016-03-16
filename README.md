@@ -45,6 +45,6 @@ mvn clean verify
 
 ### Authentication and Authorization
 * Simple Auth used based on io.vertx.ext.auth.shiro.ShiroAuth
-* Users, passwords and roles declared (unencripted) in properties file: vertx-users.properties
+* Users, passwords and roles declared (unencrypted) in file: **vertx-users.properties**
 * Using REST API for CRUD (URL: /rest/whiskys*) requires authentication (username: tim, password: sausages)
 * Only user with role:admin is authorized to use the REST API (URL: /rest/whiskys*) 
